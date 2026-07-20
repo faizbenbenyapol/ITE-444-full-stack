@@ -1,0 +1,208 @@
+<!-- โค้ดตัวอย่างเดิมถูกปิดการทำงานไว้
+
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>คำนวณค่าน้ำค่าไฟ</title>
+  </head>
+
+  <body>
+    <h2>คำนวณค่าน้ำค่าไฟ</h2>
+
+    <label>หน่วยน้ำ:</label>
+    <input type="number" id="water" name="water" min="0" />
+    <br /><br />
+
+    <label>หน่วยไฟ:</label>
+    <input type="number" id="electric" name="electric" min="0" />
+    <br /><br />
+
+    <button onclick="calculate()">คำนวณ</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+      function calculate() {
+        let water = document.getElementById("water").value;
+        let electric = document.getElementById("electric").value;
+
+        let waterRate = 10;
+        let electricRate = 5;
+
+        let waterTotal = water * waterRate;
+        let electricTotal = electric * electricRate;
+        let total = waterTotal + electricTotal;
+
+        document.getElementById("result").innerHTML =
+          "ค่าน้ำ: " +
+          waterTotal +
+          " บาท <br>" +
+          "ค่าไฟ: " +
+          electricTotal +
+          " บาท <br>" +
+          "รวมทั้งหมด: " +
+          total +
+          " บาท";
+      }
+    </script>
+  </body>
+</html>
+
+จบโค้ดตัวอย่างเดิม -->
+
+
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>คิดค่าน้ำค่าไฟ</title>
+  </head>
+
+  <body>
+    <!-- แบบฟอร์มคำนวณค่าเช่า ค่าน้ำ และค่าไฟ -->
+    <form action="" method="post">
+
+      <!-- หัวข้อ -->
+      <h4>คิดค่าน้ำค่าไฟ</h4>
+
+      <!-- ช่องกรอกค่าเช่า -->
+      ค่าเช่า
+      <input
+        type="number"
+        id="rent"
+        min="0"
+        oninput="calculateBill()"
+      />
+      บาท
+
+      <br />
+
+      <!-- ช่องกรอกจำนวนหน่วยน้ำ -->
+      น้ำ
+      <input
+        type="number"
+        id="water"
+        min="0"
+        oninput="calculateBill()"
+      />
+
+      <!-- ราคาค่าน้ำต่อหน่วย -->
+      หน่วยละ
+      <input
+        type="text"
+        id="waterRate"
+        value="18"
+        readonly
+      />
+
+      <!-- ผลรวมค่าน้ำ -->
+      รวม
+      <input
+        type="text"
+        id="resultwater_waterRate"
+        readonly
+      />
+
+      <br />
+
+      <!-- ช่องกรอกจำนวนหน่วยไฟ -->
+      ไฟ
+      <input
+        type="number"
+        id="elec"
+        min="0"
+        oninput="calculateBill()"
+      />
+
+      <!-- ราคาค่าไฟต่อหน่วย -->
+      หน่วยละ
+      <input
+        type="text"
+        id="elecRate"
+        value="20"
+        readonly
+      />
+
+      <!-- ผลรวมค่าไฟ -->
+      รวม
+      <input
+        type="text"
+        id="resultelec_elecRate"
+        readonly
+      />
+
+      <br />
+
+      <!-- ยอดรวมค่าเช่า ค่าน้ำ และค่าไฟ -->
+      รวมทั้งสิ้น
+      <input
+        type="text"
+        id="grandwaterTotal"
+        readonly
+      />
+      บาท
+    </form>
+
+    <script>
+      // ฟังก์ชันคำนวณค่าเช่า ค่าน้ำ ค่าไฟ และยอดรวมทั้งหมด
+      function calculateBill() {
+        // รับค่าจากช่องกรอกค่าเช่า
+        let rent = parseFloat(
+          document.getElementById("rent").value
+        ) || 0;
+
+        // รับจำนวนหน่วยน้ำ
+        let water = parseFloat(
+          document.getElementById("water").value
+        ) || 0;
+
+        // รับราคาค่าน้ำต่อหน่วย
+        let waterRate = parseFloat(
+          document.getElementById("waterRate").value
+        ) || 0;
+
+        // รับจำนวนหน่วยไฟ
+        let elec = parseFloat(
+          document.getElementById("elec").value
+        ) || 0;
+
+        // รับราคาค่าไฟต่อหน่วย
+        let elecRate = parseFloat(
+          document.getElementById("elecRate").value
+        ) || 0;
+
+        // คำนวณค่าน้ำ
+        let waterTotal = water * waterRate;
+
+        // คำนวณค่าไฟ
+        let elecTotal = elec * elecRate;
+
+        // คำนวณยอดรวมทั้งหมด
+        let grandTotal = rent + waterTotal + elecTotal;
+
+        // แสดงค่าน้ำรวม
+        document.getElementById(
+          "resultwater_waterRate"
+        ).value = waterTotal;
+
+        // แสดงค่าไฟรวม
+        document.getElementById(
+          "resultelec_elecRate"
+        ).value = elecTotal;
+
+        // แสดงยอดรวมทั้งหมด
+        document.getElementById(
+          "grandwaterTotal"
+        ).value = grandTotal;
+      }
+    </script>
+  </body>
+</html>

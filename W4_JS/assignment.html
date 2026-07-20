@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ระบบคิดค่าเช่า ค่าน้ำ และค่าไฟ</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: #f4f5f7;
+            --card: #ffffff;
+            --primary: #1f2937;
+            --secondary: #6b7280;
+            --border: #dfe3e8;
+            --input-bg: #fafafa;
+            --readonly-bg: #f1f3f5;
+            --button: #111827;
+            --button-hover: #374151;
+            --success-bg: #ecfdf3;
+            --success-text: #137547;
+            --danger: #c0392b;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 48px 20px;
+            font-family:
+                "Noto Sans Thai",
+                "Segoe UI",
+                Tahoma,
+                sans-serif;
+            color: var(--primary);
+            background: var(--background);
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            margin-bottom: 24px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: var(--secondary);
+            font-size: 15px;
+        }
+
+        .form-card {
+            padding: 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(17, 24, 39, 0.05);
+        }
+
+        .section {
+            padding-bottom: 28px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section:last-of-type {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            margin: 0 0 4px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            margin: 0;
+            color: var(--secondary);
+            font-size: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .meter-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(130px, 1fr));
+            gap: 16px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .field label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .field-label-note {
+            color: var(--secondary);
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 44px;
+            padding: 0 13px;
+            font-family: inherit;
+            font-size: 15px;
+            color: var(--primary);
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            outline: none;
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                background-color 0.2s ease;
+        }
+
+        input:focus,
+        select:focus {
+            background: #ffffff;
+            border-color: #6b7280;
+            box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.12);
+        }
+
+        input[readonly] {
+            color: #4b5563;
+            background: var(--readonly-bg);
+            cursor: default;
+        }
+
+        .input-unit {
+            position: relative;
+        }
+
+        .input-unit input {
+            padding-right: 65px;
+        }
+
+        .input-unit span {
+            position: absolute;
+            top: 50%;
+            right: 13px;
+            color: var(--secondary);
+            font-size: 13px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .summary-box {
+            padding: 18px;
+            background: #f8f9fa;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .summary-box span {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--secondary);
+            font-size: 13px;
+        }
+
+        .summary-box strong {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .grand-total {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 22px;
+            background: var(--primary);
+            color: #ffffff;
+            border-radius: 10px;
+        }
+
+        .grand-total span {
+            font-size: 15px;
+            color: #d1d5db;
+        }
+
+        .grand-total strong {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .form-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        button {
+            min-width: 130px;
+            height: 44px;
+            padding: 0 22px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            background: var(--button);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition:
+                background-color 0.2s ease,
+                transform 0.15s ease;
+        }
+
+        button:hover {
+            background: var(--button-hover);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        #message {
+            display: none;
+            padding: 11px 14px;
+            color: var(--success-text);
+            background: var(--success-bg);
+            border: 1px solid #b7e4c7;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .error-text {
+            min-height: 18px;
+            margin-top: 6px;
+            color: var(--danger);
+            font-size: 12px;
+        }
+
+        @media (max-width: 1050px) {
+            .meter-grid {
+                grid-template-columns: repeat(3, minmax(130px, 1fr));
+            }
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 24px 14px;
+            }
+
+            .form-card {
+                padding: 22px;
+            }
+
+            .page-header h1 {
+                font-size: 25px;
+            }
+
+            .form-grid,
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .meter-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .grand-total {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .form-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .meter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="page-container">
+
+        <header class="page-header">
+            <h1>ระบบคำนวณค่าเช่า</h1>
+            <p>กรอกข้อมูลค่าเช่า ค่าน้ำ ค่าไฟ และค่าบริการเพิ่มเติม</p>
+        </header>
+
+        <form id="rentForm" class="form-card">
+
+            <!-- ข้อมูลห้อง -->
+            <section class="section">
+
+                <div class="section-header">
+                    <h2>ข้อมูลห้องและรอบบิล</h2>
+                    <p>เลือกรายละเอียดห้องพักและเดือนที่ต้องการคิดค่าใช้จ่าย</p>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="roomNumber">เลขห้อง</label>
+
+                        <select id="roomNumber">
+                            <option value="">เลือกเลขห้อง</option>
+                            <option value="2001">2001</option>
+                            <option value="2002">2002</option>
+                            <option value="2003">2003</option>
+                            <option value="2004">2004</option>
+                            <option value="2005">2005</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="billingMonth">รอบบิล</label>
+
+                        <select id="billingMonth">
+                            <option value="">เลือกรอบบิล</option>
+                            <option value="มกราคม 2569">มกราคม 2569</option>
+                            <option value="กุมภาพันธ์ 2569">กุมภาพันธ์ 2569</option>
+                            <option value="มีนาคม 2569">มีนาคม 2569</option>
+                            <option value="เมษายน 2569">เมษายน 2569</option>
+                            <option value="พฤษภาคม 2569">พฤษภาคม 2569</option>
+                            <option value="มิถุนายน 2569">มิถุนายน 2569</option>
+                            <option value="กรกฎาคม 2569">กรกฎาคม 2569</option>
+                            <option value="สิงหาคม 2569">สิงหาคม 2569</option>
+                            <option value="กันยายน 2569">กันยายน 2569</option>
+                            <option value="ตุลาคม 2569">ตุลาคม 2569</option>
+                            <option value="พฤศจิกายน 2569">พฤศจิกายน 2569</option>
+                            <option value="ธันวาคม 2569">ธันวาคม 2569</option>
+                        </select>
+                    </div>
+
+                    <div class="field full-width">
+                        <label for="rent">ค่าเช่า</label>
+
+                        <div class="input-unit">
+                            <input
+                                type="number"
+                                id="rent"
+                                value="3500"
+                                min="0"
+                                oninput="calculateBill()"
+                            >
+                            <span>บาท</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ค่าน้ำ -->
+            <section class="section">
+
+                <div class="section-header">
+                    <h2>ค่าน้ำ</h2>
+                    <p>คำนวณจากเลขมิเตอร์ครั้งนี้ลบเลขมิเตอร์ครั้งก่อน</p>
+                </div>
+
+                <div class="meter-grid">
+
+                    <div class="field">
+                        <label for="waterCurrent">มิเตอร์ครั้งนี้</label>
+                        <input
+                            type="number"
+                            id="waterCurrent"
+                            value="100"
+                            min="0"
+                            oninput="calculateBill()"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="waterPrevious">มิเตอร์ครั้งก่อน</label>
+                        <input
+                            type="number"
+                            id="waterPrevious"
+                            value="85"
+                            min="0"
+                            oninput="calculateBill()"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="waterUnits">หน่วยที่ใช้</label>
+                        <input
+                            type="number"
+                            id="waterUnits"
+                            readonly
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="waterRate">ราคาต่อหน่วย</label>
+
+                        <div class="input-unit">
+                            <input
+                                type="number"
+                                id="waterRate"
+                                value="20"
+                                min="0"
+                                oninput="calculateBill()"
+                            >
+                            <span>บาท</span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="waterTotal">ค่าน้ำรวม</label>
+
+                        <div class="input-unit">
+                            <input
+                                type="number"
+                                id="waterTotal"
+                                readonly
+                            >
+                            <span>บาท</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="waterError" class="error-text"></div>
+
+            </section>
+
+            <!-- ค่าไฟ -->
+            <section class="section">
+
+                <div class="section-header">
+                    <h2>ค่าไฟ</h2>
+                    <p>คำนวณจากเลขมิเตอร์ครั้งนี้ลบเลขมิเตอร์ครั้งก่อน</p>
+                </div>
+
+                <div class="meter-grid">
+
+                    <div class="field">
+                        <label for="electricCurrent">มิเตอร์ครั้งนี้</label>
+                        <input
+                            type="number"
+                            id="electricCurrent"
+                            value="100"
+                            min="0"
+                            oninput="calculateBill()"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="electricPrevious">มิเตอร์ครั้งก่อน</label>
+                        <input
+                            type="number"
+                            id="electricPrevious"
+                            value="90"
+                            min="0"
+                            oninput="calculateBill()"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="electricUnits">หน่วยที่ใช้</label>
+                        <input
+                            type="number"
+                            id="electricUnits"
+                            readonly
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="electricRate">ราคาต่อหน่วย</label>
+
+                        <div class="input-unit">
+                            <input
+                                type="number"
+                                id="electricRate"
+                                value="15"
+                                min="0"
+                                oninput="calculateBill()"
+                            >
+                            <span>บาท</span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="electricTotal">ค่าไฟรวม</label>
+
+                        <div class="input-unit">
+                            <input
+                                type="number"
+                                id="electricTotal"
+                                readonly
+                            >
+                            <span>บาท</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="electricError" class="error-text"></div>
+
+            </section>
+
+            <!-- ค่าใช้จ่ายเพิ่มเติม -->
+            <section class="section">
+
+                <div class="section-header">
+                    <h2>ค่าใช้จ่ายเพิ่มเติม</h2>
+                    <p>ระบุค่าที่จอดรถและค่าส่วนกลางประจำเดือน</p>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="parkingFee">
+                            ค่าที่จอดรถ
+                            <span class="field-label-note">กรอก 0 หากไม่มี</span>
+                        </label>
+
+                        <div class="input-unit">
+                            <input
+                                type="number"
+                                id="parkingFee"
+                                value="0"
+                                min="0"
+                                oninput="calculateBill()"
+                            >
+                            <span>บาท</span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="commonFee">ค่าส่วนกลาง</label>
+
+                        <div class="input-unit">
+                            <input
+                                type="number"
+                                id="commonFee"
+                                value="500"
+                                min="0"
+                                oninput="calculateBill()"
+                            >
+                            <span>บาท</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- สรุปค่าใช้จ่าย -->
+            <section class="section">
+
+                <div class="section-header">
+                    <h2>สรุปค่าใช้จ่าย</h2>
+                    <p>ยอดรวมจากค่าเช่า ค่าน้ำ ค่าไฟ และค่าบริการทั้งหมด</p>
+                </div>
+
+                <div class="summary-grid">
+
+                    <div class="summary-box">
+                        <span>ค่าเช่า</span>
+                        <strong id="rentSummary">0.00 บาท</strong>
+                    </div>
+
+                    <div class="summary-box">
+                        <span>ค่าน้ำ</span>
+                        <strong id="waterSummary">0.00 บาท</strong>
+                    </div>
+
+                    <div class="summary-box">
+                        <span>ค่าไฟ</span>
+                        <strong id="electricSummary">0.00 บาท</strong>
+                    </div>
+
+                </div>
+
+                <div class="grand-total">
+                    <div>
+                        <span>ยอดรวมทั้งสิ้น</span>
+                    </div>
+
+                    <strong id="grandTotalDisplay">0.00 บาท</strong>
+                </div>
+
+                <input type="hidden" id="grandTotal">
+
+            </section>
+
+            <div class="form-actions">
+
+                <div id="message">บันทึกข้อมูลเรียบร้อยแล้ว</div>
+
+                <button type="submit">บันทึกข้อมูล</button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+    <script>
+        // รับค่าตัวเลขจาก input
+        function getNumber(id) {
+            return Number(document.getElementById(id).value) || 0;
+        }
+
+        // จัดรูปแบบตัวเลขเป็นสกุลเงินบาท
+        function formatMoney(value) {
+            return value.toLocaleString("th-TH", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }) + " บาท";
+        }
+
+        // คำนวณค่าเช่า ค่าน้ำ ค่าไฟ และยอดรวมทั้งหมด
+        function calculateBill() {
+            const rent = getNumber("rent");
+
+            const waterCurrent = getNumber("waterCurrent");
+            const waterPrevious = getNumber("waterPrevious");
+            const waterRate = getNumber("waterRate");
+
+            const electricCurrent = getNumber("electricCurrent");
+            const electricPrevious = getNumber("electricPrevious");
+            const electricRate = getNumber("electricRate");
+
+            const parkingFee = getNumber("parkingFee");
+            const commonFee = getNumber("commonFee");
+
+            let waterUnits = waterCurrent - waterPrevious;
+            let electricUnits = electricCurrent - electricPrevious;
+
+            const waterError = document.getElementById("waterError");
+            const electricError = document.getElementById("electricError");
+
+            waterError.textContent = "";
+            electricError.textContent = "";
+
+            if (waterUnits < 0) {
+                waterUnits = 0;
+                waterError.textContent =
+                    "เลขมิเตอร์น้ำครั้งนี้ต้องไม่น้อยกว่าครั้งก่อน";
+            }
+
+            if (electricUnits < 0) {
+                electricUnits = 0;
+                electricError.textContent =
+                    "เลขมิเตอร์ไฟครั้งนี้ต้องไม่น้อยกว่าครั้งก่อน";
+            }
+
+            const waterTotal = waterUnits * waterRate;
+            const electricTotal = electricUnits * electricRate;
+
+            const grandTotal =
+                rent +
+                waterTotal +
+                electricTotal +
+                parkingFee +
+                commonFee;
+
+            document.getElementById("waterUnits").value = waterUnits;
+            document.getElementById("waterTotal").value = waterTotal;
+
+            document.getElementById("electricUnits").value = electricUnits;
+            document.getElementById("electricTotal").value = electricTotal;
+
+            document.getElementById("grandTotal").value = grandTotal;
+
+            document.getElementById("rentSummary").textContent =
+                formatMoney(rent);
+
+            document.getElementById("waterSummary").textContent =
+                formatMoney(waterTotal);
+
+            document.getElementById("electricSummary").textContent =
+                formatMoney(electricTotal);
+
+            document.getElementById("grandTotalDisplay").textContent =
+                formatMoney(grandTotal);
+
+            document.getElementById("message").style.display = "none";
+        }
+
+        // ตรวจสอบข้อมูลก่อนบันทึก
+        document
+            .getElementById("rentForm")
+            .addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const roomNumber =
+                    document.getElementById("roomNumber").value;
+
+                const billingMonth =
+                    document.getElementById("billingMonth").value;
+
+                if (roomNumber === "") {
+                    alert("กรุณาเลือกเลขห้อง");
+                    document.getElementById("roomNumber").focus();
+                    return;
+                }
+
+                if (billingMonth === "") {
+                    alert("กรุณาเลือกรอบบิล");
+                    document.getElementById("billingMonth").focus();
+                    return;
+                }
+
+                const waterCurrent = getNumber("waterCurrent");
+                const waterPrevious = getNumber("waterPrevious");
+
+                if (waterCurrent < waterPrevious) {
+                    alert("กรุณาตรวจสอบเลขมิเตอร์น้ำ");
+                    document.getElementById("waterCurrent").focus();
+                    return;
+                }
+
+                const electricCurrent = getNumber("electricCurrent");
+                const electricPrevious = getNumber("electricPrevious");
+
+                if (electricCurrent < electricPrevious) {
+                    alert("กรุณาตรวจสอบเลขมิเตอร์ไฟ");
+                    document.getElementById("electricCurrent").focus();
+                    return;
+                }
+
+                const message = document.getElementById("message");
+
+                message.style.display = "block";
+                message.textContent =
+                    "บันทึกข้อมูลห้อง " +
+                    roomNumber +
+                    " รอบบิล " +
+                    billingMonth +
+                    " เรียบร้อยแล้ว";
+            });
+
+        calculateBill();
+    </script>
+
+</body>
+</html>
