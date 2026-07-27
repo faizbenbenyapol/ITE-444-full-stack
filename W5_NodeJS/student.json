@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Somchai",
+    "major": "IT"
+  },
+  {
+    "id": 2,
+    "name": "Suda",
+    "major": "Computer Science"
+  },
+  {
+    "id": 3,
+    "name": "Anan",
+    "major": "Digital Technology"
+  },
+  {
+    "id": 4,
+    "name": "Manee",
+    "major": "Software Engineering"
+  },
+  {
+    "id": 5,
+    "name": "Piti",
+    "major": "Data Science"
+  }
+]
