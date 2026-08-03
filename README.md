@@ -11,6 +11,6 @@
 | **Week 3** |  **Js Condition Loop Function** | [ สไลด์ทำ Workshop (Google Slides)](https://docs.google.com/presentation/d/1YAmvWKPIR-NYGfDJmTqvLe4hjXmlf2XeFBstQB52hrY/edit?usp=sharing) |  Done |
 | **Week 4** |  **JS Object & DOM** | [ เอกสารและสไลด์ประกอบ (Google Drive)](https://drive.google.com/drive/folders/1QFCSo8aRxqHAoswzjeeVH-Zqc6rSgDG5?usp=sharing) |  Done |
 | **Week 5** |  **Node.js & Web Server** | [ รูปภาพประกอบ (Google Drive)](https://drive.google.com/file/d/1Vq_xFz4XboRpA8NYTlYUO-_pVICU3Ji8/view?usp=sharing) |  Done |
-| **Week 6** |  **Express js** | [ เอกสารและวิดิโอประกอบ (Google Drive)](https://drive.google.com/drive/folders/19x3ZP6qbnR0gowZnEXBpNNAlRQ_MLPOY?usp=sharing) |  Done |
+| **Week 6** |  **Express js** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/drive/folders/19x3ZP6qbnR0gowZnEXBpNNAlRQ_MLPOY?usp=sharing) |  Done |
 
 
