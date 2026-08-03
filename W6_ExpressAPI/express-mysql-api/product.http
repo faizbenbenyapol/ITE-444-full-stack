@@ -1,0 +1,24 @@
+GET http://localhost:3000/products
+
+###post product
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "MacBook Air",
+  "price": 34900,
+  "stock": 5
+}
+
+### put product
+PUT http://localhost:3000/products/1
+Content-Type: application/json
+
+{
+"name":"iPhone 16 Pro",
+"price":45900,
+"stock":20
+}
+
+#### delete product
+DELETE http://localhost:3000/products/1

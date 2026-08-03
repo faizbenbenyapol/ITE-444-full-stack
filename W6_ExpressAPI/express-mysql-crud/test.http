@@ -1,0 +1,35 @@
+### 1. GET - แสดงข้อมูลรถทั้งหมด
+GET http://localhost:3000/cars
+
+###
+
+### 2. POST - เพิ่มข้อมูลรถคันใหม่
+POST http://localhost:3000/cars
+Content-Type: application/json
+
+{
+  "brand": "BYD",
+  "model": "Atto 3",
+  "year": 2024,
+  "price": 899000,
+  "color": "Silver"
+}
+
+###
+
+### 3. PUT - แก้ไขข้อมูลรถ (ID: 1)
+PUT http://localhost:3000/cars/1
+Content-Type: application/json
+
+{
+  "brand": "Honda",
+  "model": "Civic RS",
+  "year": 2024,
+  "price": 1000000,
+  "color": "Black"
+}
+
+###
+
+### 4. DELETE - ลบข้อมูลรถ (ID: 1)
+DELETE http://localhost:3000/cars/1

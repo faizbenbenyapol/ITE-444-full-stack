@@ -1,0 +1,11 @@
+### Home
+GET http://localhost:3000/
+ 
+### Students
+GET http://localhost:3000/students
+ 
+### Products
+GET http://localhost:3000/products
+ 
+### Games
+GET http://localhost:3000/games
