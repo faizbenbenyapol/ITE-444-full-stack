@@ -13,6 +13,9 @@
 | **Week 5** |  **Node.js & Web Server** | [ รูปภาพประกอบ (Google Drive)](https://drive.google.com/file/d/1Vq_xFz4XboRpA8NYTlYUO-_pVICU3Ji8/view?usp=sharing) |  Done |
 | **Week 6** |  **Express js** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/drive/folders/19x3ZP6qbnR0gowZnEXBpNNAlRQ_MLPOY?usp=sharing) |  Done |
 | **Week 7** |  **React Bootstrap MySQL** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/drive/folders/1jxQrVG2ASOgu38IRJx0myWJfHKUhP2lT?usp=sharing) |  Done |
+| **Week 8** |  **สอบมิดเทอม** | ไม่มีเรียน |  Done |
+| **Week 9** |  **Next.js** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/file/d/1pZ20a247U4DeqtR6_S52enD1OImmomCL/view?usp=sharing) |  Done |
+
 
 
 
