@@ -15,6 +15,7 @@
 | **Week 7** |  **React Bootstrap MySQL** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/drive/folders/1jxQrVG2ASOgu38IRJx0myWJfHKUhP2lT?usp=sharing) |  Done |
 | **Week 8** |  **สอบมิดเทอม** | ไม่มีเรียน |  Done |
 | **Week 9** |  **Next.js** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/file/d/1pZ20a247U4DeqtR6_S52enD1OImmomCL/view?usp=sharing) |  Done |
+| **Week 10** |  **Next.js CRUD & Admin API** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/file/d/1Cj9vf2qeKmmpEixxeuhiqsK4Uw0djbdM/view?usp=sharing) |  Done |
 
 
 
