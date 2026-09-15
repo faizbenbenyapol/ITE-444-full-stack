@@ -28,6 +28,11 @@ export type student = $Result.DefaultSelection<Prisma.$studentPayload>
  * 
  */
 export type tbl_test = $Result.DefaultSelection<Prisma.$tbl_testPayload>
+/**
+ * Model tbl_std
+ * 
+ */
+export type tbl_std = $Result.DefaultSelection<Prisma.$tbl_stdPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -179,6 +184,16 @@ export class PrismaClient<
     * ```
     */
   get tbl_test(): Prisma.tbl_testDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tbl_std`: Exposes CRUD operations for the **tbl_std** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tbl_stds
+    * const tbl_stds = await prisma.tbl_std.findMany()
+    * ```
+    */
+  get tbl_std(): Prisma.tbl_stdDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -628,7 +643,8 @@ export namespace Prisma {
   export const ModelName: {
     products: 'products',
     student: 'student',
-    tbl_test: 'tbl_test'
+    tbl_test: 'tbl_test',
+    tbl_std: 'tbl_std'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "products" | "student" | "tbl_test"
+      modelProps: "products" | "student" | "tbl_test" | "tbl_std"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -846,6 +862,72 @@ export namespace Prisma {
           }
         }
       }
+      tbl_std: {
+        payload: Prisma.$tbl_stdPayload<ExtArgs>
+        fields: Prisma.tbl_stdFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.tbl_stdFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_stdPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tbl_stdFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_stdPayload>
+          }
+          findFirst: {
+            args: Prisma.tbl_stdFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_stdPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.tbl_stdFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_stdPayload>
+          }
+          findMany: {
+            args: Prisma.tbl_stdFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_stdPayload>[]
+          }
+          create: {
+            args: Prisma.tbl_stdCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_stdPayload>
+          }
+          createMany: {
+            args: Prisma.tbl_stdCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.tbl_stdDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_stdPayload>
+          }
+          update: {
+            args: Prisma.tbl_stdUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_stdPayload>
+          }
+          deleteMany: {
+            args: Prisma.tbl_stdDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.tbl_stdUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.tbl_stdUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_stdPayload>
+          }
+          aggregate: {
+            args: Prisma.Tbl_stdAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTbl_std>
+          }
+          groupBy: {
+            args: Prisma.tbl_stdGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Tbl_stdGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.tbl_stdCountArgs<ExtArgs>
+            result: $Utils.Optional<Tbl_stdCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -972,6 +1054,7 @@ export namespace Prisma {
     products?: productsOmit
     student?: studentOmit
     tbl_test?: tbl_testOmit
+    tbl_std?: tbl_stdOmit
   }
 
   /* Types for Logging */
@@ -3824,6 +3907,916 @@ export namespace Prisma {
 
 
   /**
+   * Model tbl_std
+   */
+
+  export type AggregateTbl_std = {
+    _count: Tbl_stdCountAggregateOutputType | null
+    _avg: Tbl_stdAvgAggregateOutputType | null
+    _sum: Tbl_stdSumAggregateOutputType | null
+    _min: Tbl_stdMinAggregateOutputType | null
+    _max: Tbl_stdMaxAggregateOutputType | null
+  }
+
+  export type Tbl_stdAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Tbl_stdSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Tbl_stdMinAggregateOutputType = {
+    id: number | null
+    std_code: string | null
+    std_name: string | null
+    dateCreate: Date | null
+  }
+
+  export type Tbl_stdMaxAggregateOutputType = {
+    id: number | null
+    std_code: string | null
+    std_name: string | null
+    dateCreate: Date | null
+  }
+
+  export type Tbl_stdCountAggregateOutputType = {
+    id: number
+    std_code: number
+    std_name: number
+    dateCreate: number
+    _all: number
+  }
+
+
+  export type Tbl_stdAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type Tbl_stdSumAggregateInputType = {
+    id?: true
+  }
+
+  export type Tbl_stdMinAggregateInputType = {
+    id?: true
+    std_code?: true
+    std_name?: true
+    dateCreate?: true
+  }
+
+  export type Tbl_stdMaxAggregateInputType = {
+    id?: true
+    std_code?: true
+    std_name?: true
+    dateCreate?: true
+  }
+
+  export type Tbl_stdCountAggregateInputType = {
+    id?: true
+    std_code?: true
+    std_name?: true
+    dateCreate?: true
+    _all?: true
+  }
+
+  export type Tbl_stdAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tbl_std to aggregate.
+     */
+    where?: tbl_stdWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_stds to fetch.
+     */
+    orderBy?: tbl_stdOrderByWithRelationInput | tbl_stdOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tbl_stdWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_stds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_stds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tbl_stds
+    **/
+    _count?: true | Tbl_stdCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Tbl_stdAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Tbl_stdSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Tbl_stdMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Tbl_stdMaxAggregateInputType
+  }
+
+  export type GetTbl_stdAggregateType<T extends Tbl_stdAggregateArgs> = {
+        [P in keyof T & keyof AggregateTbl_std]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTbl_std[P]>
+      : GetScalarType<T[P], AggregateTbl_std[P]>
+  }
+
+
+
+
+  export type tbl_stdGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tbl_stdWhereInput
+    orderBy?: tbl_stdOrderByWithAggregationInput | tbl_stdOrderByWithAggregationInput[]
+    by: Tbl_stdScalarFieldEnum[] | Tbl_stdScalarFieldEnum
+    having?: tbl_stdScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Tbl_stdCountAggregateInputType | true
+    _avg?: Tbl_stdAvgAggregateInputType
+    _sum?: Tbl_stdSumAggregateInputType
+    _min?: Tbl_stdMinAggregateInputType
+    _max?: Tbl_stdMaxAggregateInputType
+  }
+
+  export type Tbl_stdGroupByOutputType = {
+    id: number
+    std_code: string
+    std_name: string
+    dateCreate: Date
+    _count: Tbl_stdCountAggregateOutputType | null
+    _avg: Tbl_stdAvgAggregateOutputType | null
+    _sum: Tbl_stdSumAggregateOutputType | null
+    _min: Tbl_stdMinAggregateOutputType | null
+    _max: Tbl_stdMaxAggregateOutputType | null
+  }
+
+  type GetTbl_stdGroupByPayload<T extends tbl_stdGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Tbl_stdGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Tbl_stdGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Tbl_stdGroupByOutputType[P]>
+            : GetScalarType<T[P], Tbl_stdGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tbl_stdSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    std_code?: boolean
+    std_name?: boolean
+    dateCreate?: boolean
+  }, ExtArgs["result"]["tbl_std"]>
+
+
+
+  export type tbl_stdSelectScalar = {
+    id?: boolean
+    std_code?: boolean
+    std_name?: boolean
+    dateCreate?: boolean
+  }
+
+  export type tbl_stdOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "std_code" | "std_name" | "dateCreate", ExtArgs["result"]["tbl_std"]>
+
+  export type $tbl_stdPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tbl_std"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      std_code: string
+      std_name: string
+      dateCreate: Date
+    }, ExtArgs["result"]["tbl_std"]>
+    composites: {}
+  }
+
+  type tbl_stdGetPayload<S extends boolean | null | undefined | tbl_stdDefaultArgs> = $Result.GetResult<Prisma.$tbl_stdPayload, S>
+
+  type tbl_stdCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tbl_stdFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Tbl_stdCountAggregateInputType | true
+    }
+
+  export interface tbl_stdDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tbl_std'], meta: { name: 'tbl_std' } }
+    /**
+     * Find zero or one Tbl_std that matches the filter.
+     * @param {tbl_stdFindUniqueArgs} args - Arguments to find a Tbl_std
+     * @example
+     * // Get one Tbl_std
+     * const tbl_std = await prisma.tbl_std.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tbl_stdFindUniqueArgs>(args: SelectSubset<T, tbl_stdFindUniqueArgs<ExtArgs>>): Prisma__tbl_stdClient<$Result.GetResult<Prisma.$tbl_stdPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tbl_std that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tbl_stdFindUniqueOrThrowArgs} args - Arguments to find a Tbl_std
+     * @example
+     * // Get one Tbl_std
+     * const tbl_std = await prisma.tbl_std.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tbl_stdFindUniqueOrThrowArgs>(args: SelectSubset<T, tbl_stdFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tbl_stdClient<$Result.GetResult<Prisma.$tbl_stdPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tbl_std that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_stdFindFirstArgs} args - Arguments to find a Tbl_std
+     * @example
+     * // Get one Tbl_std
+     * const tbl_std = await prisma.tbl_std.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tbl_stdFindFirstArgs>(args?: SelectSubset<T, tbl_stdFindFirstArgs<ExtArgs>>): Prisma__tbl_stdClient<$Result.GetResult<Prisma.$tbl_stdPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tbl_std that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_stdFindFirstOrThrowArgs} args - Arguments to find a Tbl_std
+     * @example
+     * // Get one Tbl_std
+     * const tbl_std = await prisma.tbl_std.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tbl_stdFindFirstOrThrowArgs>(args?: SelectSubset<T, tbl_stdFindFirstOrThrowArgs<ExtArgs>>): Prisma__tbl_stdClient<$Result.GetResult<Prisma.$tbl_stdPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tbl_stds that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_stdFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tbl_stds
+     * const tbl_stds = await prisma.tbl_std.findMany()
+     * 
+     * // Get first 10 Tbl_stds
+     * const tbl_stds = await prisma.tbl_std.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tbl_stdWithIdOnly = await prisma.tbl_std.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends tbl_stdFindManyArgs>(args?: SelectSubset<T, tbl_stdFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tbl_stdPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tbl_std.
+     * @param {tbl_stdCreateArgs} args - Arguments to create a Tbl_std.
+     * @example
+     * // Create one Tbl_std
+     * const Tbl_std = await prisma.tbl_std.create({
+     *   data: {
+     *     // ... data to create a Tbl_std
+     *   }
+     * })
+     * 
+     */
+    create<T extends tbl_stdCreateArgs>(args: SelectSubset<T, tbl_stdCreateArgs<ExtArgs>>): Prisma__tbl_stdClient<$Result.GetResult<Prisma.$tbl_stdPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tbl_stds.
+     * @param {tbl_stdCreateManyArgs} args - Arguments to create many Tbl_stds.
+     * @example
+     * // Create many Tbl_stds
+     * const tbl_std = await prisma.tbl_std.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tbl_stdCreateManyArgs>(args?: SelectSubset<T, tbl_stdCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Tbl_std.
+     * @param {tbl_stdDeleteArgs} args - Arguments to delete one Tbl_std.
+     * @example
+     * // Delete one Tbl_std
+     * const Tbl_std = await prisma.tbl_std.delete({
+     *   where: {
+     *     // ... filter to delete one Tbl_std
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tbl_stdDeleteArgs>(args: SelectSubset<T, tbl_stdDeleteArgs<ExtArgs>>): Prisma__tbl_stdClient<$Result.GetResult<Prisma.$tbl_stdPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tbl_std.
+     * @param {tbl_stdUpdateArgs} args - Arguments to update one Tbl_std.
+     * @example
+     * // Update one Tbl_std
+     * const tbl_std = await prisma.tbl_std.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tbl_stdUpdateArgs>(args: SelectSubset<T, tbl_stdUpdateArgs<ExtArgs>>): Prisma__tbl_stdClient<$Result.GetResult<Prisma.$tbl_stdPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tbl_stds.
+     * @param {tbl_stdDeleteManyArgs} args - Arguments to filter Tbl_stds to delete.
+     * @example
+     * // Delete a few Tbl_stds
+     * const { count } = await prisma.tbl_std.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tbl_stdDeleteManyArgs>(args?: SelectSubset<T, tbl_stdDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tbl_stds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_stdUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tbl_stds
+     * const tbl_std = await prisma.tbl_std.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tbl_stdUpdateManyArgs>(args: SelectSubset<T, tbl_stdUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Tbl_std.
+     * @param {tbl_stdUpsertArgs} args - Arguments to update or create a Tbl_std.
+     * @example
+     * // Update or create a Tbl_std
+     * const tbl_std = await prisma.tbl_std.upsert({
+     *   create: {
+     *     // ... data to create a Tbl_std
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tbl_std we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tbl_stdUpsertArgs>(args: SelectSubset<T, tbl_stdUpsertArgs<ExtArgs>>): Prisma__tbl_stdClient<$Result.GetResult<Prisma.$tbl_stdPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tbl_stds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_stdCountArgs} args - Arguments to filter Tbl_stds to count.
+     * @example
+     * // Count the number of Tbl_stds
+     * const count = await prisma.tbl_std.count({
+     *   where: {
+     *     // ... the filter for the Tbl_stds we want to count
+     *   }
+     * })
+    **/
+    count<T extends tbl_stdCountArgs>(
+      args?: Subset<T, tbl_stdCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Tbl_stdCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tbl_std.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Tbl_stdAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Tbl_stdAggregateArgs>(args: Subset<T, Tbl_stdAggregateArgs>): Prisma.PrismaPromise<GetTbl_stdAggregateType<T>>
+
+    /**
+     * Group by Tbl_std.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_stdGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tbl_stdGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tbl_stdGroupByArgs['orderBy'] }
+        : { orderBy?: tbl_stdGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tbl_stdGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTbl_stdGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tbl_std model
+   */
+  readonly fields: tbl_stdFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tbl_std.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tbl_stdClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tbl_std model
+   */
+  interface tbl_stdFieldRefs {
+    readonly id: FieldRef<"tbl_std", 'Int'>
+    readonly std_code: FieldRef<"tbl_std", 'String'>
+    readonly std_name: FieldRef<"tbl_std", 'String'>
+    readonly dateCreate: FieldRef<"tbl_std", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tbl_std findUnique
+   */
+  export type tbl_stdFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_std to fetch.
+     */
+    where: tbl_stdWhereUniqueInput
+  }
+
+  /**
+   * tbl_std findUniqueOrThrow
+   */
+  export type tbl_stdFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_std to fetch.
+     */
+    where: tbl_stdWhereUniqueInput
+  }
+
+  /**
+   * tbl_std findFirst
+   */
+  export type tbl_stdFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_std to fetch.
+     */
+    where?: tbl_stdWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_stds to fetch.
+     */
+    orderBy?: tbl_stdOrderByWithRelationInput | tbl_stdOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tbl_stds.
+     */
+    cursor?: tbl_stdWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_stds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_stds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tbl_stds.
+     */
+    distinct?: Tbl_stdScalarFieldEnum | Tbl_stdScalarFieldEnum[]
+  }
+
+  /**
+   * tbl_std findFirstOrThrow
+   */
+  export type tbl_stdFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_std to fetch.
+     */
+    where?: tbl_stdWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_stds to fetch.
+     */
+    orderBy?: tbl_stdOrderByWithRelationInput | tbl_stdOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tbl_stds.
+     */
+    cursor?: tbl_stdWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_stds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_stds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tbl_stds.
+     */
+    distinct?: Tbl_stdScalarFieldEnum | Tbl_stdScalarFieldEnum[]
+  }
+
+  /**
+   * tbl_std findMany
+   */
+  export type tbl_stdFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_stds to fetch.
+     */
+    where?: tbl_stdWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_stds to fetch.
+     */
+    orderBy?: tbl_stdOrderByWithRelationInput | tbl_stdOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tbl_stds.
+     */
+    cursor?: tbl_stdWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_stds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_stds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tbl_stds.
+     */
+    distinct?: Tbl_stdScalarFieldEnum | Tbl_stdScalarFieldEnum[]
+  }
+
+  /**
+   * tbl_std create
+   */
+  export type tbl_stdCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+    /**
+     * The data needed to create a tbl_std.
+     */
+    data: XOR<tbl_stdCreateInput, tbl_stdUncheckedCreateInput>
+  }
+
+  /**
+   * tbl_std createMany
+   */
+  export type tbl_stdCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tbl_stds.
+     */
+    data: tbl_stdCreateManyInput | tbl_stdCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tbl_std update
+   */
+  export type tbl_stdUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+    /**
+     * The data needed to update a tbl_std.
+     */
+    data: XOR<tbl_stdUpdateInput, tbl_stdUncheckedUpdateInput>
+    /**
+     * Choose, which tbl_std to update.
+     */
+    where: tbl_stdWhereUniqueInput
+  }
+
+  /**
+   * tbl_std updateMany
+   */
+  export type tbl_stdUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tbl_stds.
+     */
+    data: XOR<tbl_stdUpdateManyMutationInput, tbl_stdUncheckedUpdateManyInput>
+    /**
+     * Filter which tbl_stds to update
+     */
+    where?: tbl_stdWhereInput
+    /**
+     * Limit how many tbl_stds to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tbl_std upsert
+   */
+  export type tbl_stdUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+    /**
+     * The filter to search for the tbl_std to update in case it exists.
+     */
+    where: tbl_stdWhereUniqueInput
+    /**
+     * In case the tbl_std found by the `where` argument doesn't exist, create a new tbl_std with this data.
+     */
+    create: XOR<tbl_stdCreateInput, tbl_stdUncheckedCreateInput>
+    /**
+     * In case the tbl_std was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tbl_stdUpdateInput, tbl_stdUncheckedUpdateInput>
+  }
+
+  /**
+   * tbl_std delete
+   */
+  export type tbl_stdDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+    /**
+     * Filter which tbl_std to delete.
+     */
+    where: tbl_stdWhereUniqueInput
+  }
+
+  /**
+   * tbl_std deleteMany
+   */
+  export type tbl_stdDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tbl_stds to delete
+     */
+    where?: tbl_stdWhereInput
+    /**
+     * Limit how many tbl_stds to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tbl_std without action
+   */
+  export type tbl_stdDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_std
+     */
+    select?: tbl_stdSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_std
+     */
+    omit?: tbl_stdOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -3870,6 +4863,16 @@ export namespace Prisma {
   export type Tbl_testScalarFieldEnum = (typeof Tbl_testScalarFieldEnum)[keyof typeof Tbl_testScalarFieldEnum]
 
 
+  export const Tbl_stdScalarFieldEnum: {
+    id: 'id',
+    std_code: 'std_code',
+    std_name: 'std_name',
+    dateCreate: 'dateCreate'
+  };
+
+  export type Tbl_stdScalarFieldEnum = (typeof Tbl_stdScalarFieldEnum)[keyof typeof Tbl_stdScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -3910,6 +4913,14 @@ export namespace Prisma {
   };
 
   export type tbl_testOrderByRelevanceFieldEnum = (typeof tbl_testOrderByRelevanceFieldEnum)[keyof typeof tbl_testOrderByRelevanceFieldEnum]
+
+
+  export const tbl_stdOrderByRelevanceFieldEnum: {
+    std_code: 'std_code',
+    std_name: 'std_name'
+  };
+
+  export type tbl_stdOrderByRelevanceFieldEnum = (typeof tbl_stdOrderByRelevanceFieldEnum)[keyof typeof tbl_stdOrderByRelevanceFieldEnum]
 
 
   /**
@@ -4120,6 +5131,56 @@ export namespace Prisma {
     dateCreate?: DateTimeWithAggregatesFilter<"tbl_test"> | Date | string
   }
 
+  export type tbl_stdWhereInput = {
+    AND?: tbl_stdWhereInput | tbl_stdWhereInput[]
+    OR?: tbl_stdWhereInput[]
+    NOT?: tbl_stdWhereInput | tbl_stdWhereInput[]
+    id?: IntFilter<"tbl_std"> | number
+    std_code?: StringFilter<"tbl_std"> | string
+    std_name?: StringFilter<"tbl_std"> | string
+    dateCreate?: DateTimeFilter<"tbl_std"> | Date | string
+  }
+
+  export type tbl_stdOrderByWithRelationInput = {
+    id?: SortOrder
+    std_code?: SortOrder
+    std_name?: SortOrder
+    dateCreate?: SortOrder
+    _relevance?: tbl_stdOrderByRelevanceInput
+  }
+
+  export type tbl_stdWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    std_code?: string
+    AND?: tbl_stdWhereInput | tbl_stdWhereInput[]
+    OR?: tbl_stdWhereInput[]
+    NOT?: tbl_stdWhereInput | tbl_stdWhereInput[]
+    std_name?: StringFilter<"tbl_std"> | string
+    dateCreate?: DateTimeFilter<"tbl_std"> | Date | string
+  }, "id" | "std_code">
+
+  export type tbl_stdOrderByWithAggregationInput = {
+    id?: SortOrder
+    std_code?: SortOrder
+    std_name?: SortOrder
+    dateCreate?: SortOrder
+    _count?: tbl_stdCountOrderByAggregateInput
+    _avg?: tbl_stdAvgOrderByAggregateInput
+    _max?: tbl_stdMaxOrderByAggregateInput
+    _min?: tbl_stdMinOrderByAggregateInput
+    _sum?: tbl_stdSumOrderByAggregateInput
+  }
+
+  export type tbl_stdScalarWhereWithAggregatesInput = {
+    AND?: tbl_stdScalarWhereWithAggregatesInput | tbl_stdScalarWhereWithAggregatesInput[]
+    OR?: tbl_stdScalarWhereWithAggregatesInput[]
+    NOT?: tbl_stdScalarWhereWithAggregatesInput | tbl_stdScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"tbl_std"> | number
+    std_code?: StringWithAggregatesFilter<"tbl_std"> | string
+    std_name?: StringWithAggregatesFilter<"tbl_std"> | string
+    dateCreate?: DateTimeWithAggregatesFilter<"tbl_std"> | Date | string
+  }
+
   export type productsCreateInput = {
     name: string
     price: Decimal | DecimalJsLike | number | string
@@ -4276,6 +5337,52 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     lastname?: StringFieldUpdateOperationsInput | string
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_stdCreateInput = {
+    std_code: string
+    std_name: string
+    dateCreate?: Date | string
+  }
+
+  export type tbl_stdUncheckedCreateInput = {
+    id?: number
+    std_code: string
+    std_name: string
+    dateCreate?: Date | string
+  }
+
+  export type tbl_stdUpdateInput = {
+    std_code?: StringFieldUpdateOperationsInput | string
+    std_name?: StringFieldUpdateOperationsInput | string
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_stdUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    std_code?: StringFieldUpdateOperationsInput | string
+    std_name?: StringFieldUpdateOperationsInput | string
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_stdCreateManyInput = {
+    id?: number
+    std_code: string
+    std_name: string
+    dateCreate?: Date | string
+  }
+
+  export type tbl_stdUpdateManyMutationInput = {
+    std_code?: StringFieldUpdateOperationsInput | string
+    std_name?: StringFieldUpdateOperationsInput | string
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_stdUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    std_code?: StringFieldUpdateOperationsInput | string
+    std_name?: StringFieldUpdateOperationsInput | string
     dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4544,6 +5651,41 @@ export namespace Prisma {
   }
 
   export type tbl_testSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type tbl_stdOrderByRelevanceInput = {
+    fields: tbl_stdOrderByRelevanceFieldEnum | tbl_stdOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type tbl_stdCountOrderByAggregateInput = {
+    id?: SortOrder
+    std_code?: SortOrder
+    std_name?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_stdAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type tbl_stdMaxOrderByAggregateInput = {
+    id?: SortOrder
+    std_code?: SortOrder
+    std_name?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_stdMinOrderByAggregateInput = {
+    id?: SortOrder
+    std_code?: SortOrder
+    std_name?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_stdSumOrderByAggregateInput = {
     id?: SortOrder
   }
 

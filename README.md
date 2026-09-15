@@ -16,7 +16,7 @@
 | **Week 8** |  **สอบมิดเทอม** | ไม่มีเรียน |  Done |
 | **Week 9** |  **Next.js** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/file/d/1pZ20a247U4DeqtR6_S52enD1OImmomCL/view?usp=sharing) |  Done |
 | **Week 10** |  **Next.js CRUD & Admin API** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/file/d/1vzE0cz-8jUr0B-JKHIhtl8i7wtxkhLl0/view?usp=sharing) |  Done |
-| **Week 11** |  **Next.js & Prisma ORM** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/file/d/1vzE0cz-8jUr0B-JKHIhtl8i7wtxkhLl0/view?usp=sharing) |  Done |
+| **Week 11** |  **Next.js & Prisma ORM** | [ วิดิโอประกอบ (Google Drive)](https://drive.google.com/file/d/1ODS_2Lpkjwk7L4R4zd53Aiy8Rzz3rv1_/view?usp=sharing) |  Done |
 
 
 
