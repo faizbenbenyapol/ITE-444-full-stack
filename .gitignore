@@ -1,2 +1,10 @@
 node_modules/
+.next/
+.env
+.env*.local
 *.log
+.vscode/
+.agents/
+.claude/
+.windsurf/
+
