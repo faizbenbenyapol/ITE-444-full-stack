@@ -144,6 +144,13 @@ exports.Prisma.Tbl_testScalarFieldEnum = {
   dateCreate: 'dateCreate'
 };
 
+exports.Prisma.Tbl_stdScalarFieldEnum = {
+  id: 'id',
+  std_code: 'std_code',
+  std_name: 'std_name',
+  dateCreate: 'dateCreate'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -171,11 +178,17 @@ exports.Prisma.tbl_testOrderByRelevanceFieldEnum = {
   lastname: 'lastname'
 };
 
+exports.Prisma.tbl_stdOrderByRelevanceFieldEnum = {
+  std_code: 'std_code',
+  std_name: 'std_name'
+};
+
 
 exports.Prisma.ModelName = {
   products: 'products',
   student: 'student',
-  tbl_test: 'tbl_test'
+  tbl_test: 'tbl_test',
+  tbl_std: 'tbl_std'
 };
 
 /**
