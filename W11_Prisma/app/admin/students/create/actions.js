@@ -1,6 +1,6 @@
 "use server";
 
-import db from "@/lib/db";
+import prisma from "@/lib/prisma";
 import { redirect } from "next/navigation";
 
 export async function createStudent(prevState, formData) {
@@ -10,23 +10,33 @@ export async function createStudent(prevState, formData) {
 
   const errors = [];
 
+  // รหัสนักศึกษา (varchar 15, unique)
   if (!student_code || student_code.length < 5) {
     errors.push("รหัสนักศึกษาต้องมีอย่างน้อย 5 ตัวอักษร");
-  }
-  if (!student_name || student_name.length < 3) {
-    errors.push("ชื่อ-นามสกุลต้องมีอย่างน้อย 3 ตัวอักษร");
-  }
-  if (!student_major) {
-    errors.push("กรุณากรอกสาขาวิชา");
+  } else if (student_code.length > 15) {
+    errors.push("รหัสนักศึกษาต้องไม่เกิน 15 ตัวอักษร");
+  } else {
+    // ตรวจสอบรหัสนักศึกษาซ้ำ
+    const existing = await prisma.student.findUnique({
+      where: { student_code },
+    });
+    if (existing) {
+      errors.push("รหัสนักศึกษานี้มีอยู่ในระบบแล้ว");
+    }
   }
 
-  // ตรวจสอบรหัสนักศึกษาซ้ำ
-  const [existing] = await db.query(
-    "SELECT id FROM student WHERE student_code = ?",
-    [student_code]
-  );
-  if (existing.length > 0) {
-    errors.push("รหัสนักศึกษานี้มีอยู่ในระบบแล้ว");
+  // ชื่อ-นามสกุล (varchar 150)
+  if (!student_name || student_name.length < 3) {
+    errors.push("ชื่อ-นามสกุลต้องมีอย่างน้อย 3 ตัวอักษร");
+  } else if (student_name.length > 150) {
+    errors.push("ชื่อ-นามสกุลต้องไม่เกิน 150 ตัวอักษร");
+  }
+
+  // สาขาวิชา (varchar 200)
+  if (!student_major) {
+    errors.push("กรุณากรอกสาขาวิชา");
+  } else if (student_major.length > 200) {
+    errors.push("สาขาวิชาต้องไม่เกิน 200 ตัวอักษร");
   }
 
   if (errors.length > 0) {
@@ -36,10 +46,10 @@ export async function createStudent(prevState, formData) {
     };
   }
 
-  await db.query(
-    "INSERT INTO student (student_code, student_name, student_major) VALUES (?, ?, ?)",
-    [student_code, student_name, student_major]
-  );
+  // dateCreate ใส่ให้อัตโนมัติจาก @default(now())
+  await prisma.student.create({
+    data: { student_code, student_name, student_major },
+  });
 
   redirect("/admin/students?success=create");
 }

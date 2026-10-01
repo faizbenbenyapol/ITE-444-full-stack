@@ -18,7 +18,7 @@ model products {
 
 model student {
   id            Int      @id @default(autoincrement())
-  student_code  String   @unique(map: "student_code") @db.VarChar(15)
+  student_code  String   @unique @db.VarChar(15)
   student_name  String   @db.VarChar(150)
   student_major String   @db.VarChar(200)
   dateCreate    DateTime @default(now()) @db.Timestamp(0)
@@ -35,5 +35,19 @@ model tbl_std {
   id         Int      @id @default(autoincrement())
   std_code   String   @unique(map: "std_code") @db.VarChar(15)
   std_name   String   @db.VarChar(200)
+  dateCreate DateTime @default(now()) @db.Timestamp(0)
+}
+
+model tbl_counter {
+  id         Int      @id @default(autoincrement())
+  dateCreate DateTime @default(now()) @db.Timestamp(0)
+}
+
+model tbl_user {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(100)
+  email      String   @unique @db.VarChar(150)
+  password   String   @db.VarChar(255)
+  role       String   @default("admin") @db.VarChar(50)
   dateCreate DateTime @default(now()) @db.Timestamp(0)
 }

@@ -33,6 +33,16 @@ export type tbl_test = $Result.DefaultSelection<Prisma.$tbl_testPayload>
  * 
  */
 export type tbl_std = $Result.DefaultSelection<Prisma.$tbl_stdPayload>
+/**
+ * Model tbl_counter
+ * 
+ */
+export type tbl_counter = $Result.DefaultSelection<Prisma.$tbl_counterPayload>
+/**
+ * Model tbl_user
+ * 
+ */
+export type tbl_user = $Result.DefaultSelection<Prisma.$tbl_userPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -194,6 +204,26 @@ export class PrismaClient<
     * ```
     */
   get tbl_std(): Prisma.tbl_stdDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tbl_counter`: Exposes CRUD operations for the **tbl_counter** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tbl_counters
+    * const tbl_counters = await prisma.tbl_counter.findMany()
+    * ```
+    */
+  get tbl_counter(): Prisma.tbl_counterDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tbl_user`: Exposes CRUD operations for the **tbl_user** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tbl_users
+    * const tbl_users = await prisma.tbl_user.findMany()
+    * ```
+    */
+  get tbl_user(): Prisma.tbl_userDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -644,7 +674,9 @@ export namespace Prisma {
     products: 'products',
     student: 'student',
     tbl_test: 'tbl_test',
-    tbl_std: 'tbl_std'
+    tbl_std: 'tbl_std',
+    tbl_counter: 'tbl_counter',
+    tbl_user: 'tbl_user'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +692,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "products" | "student" | "tbl_test" | "tbl_std"
+      modelProps: "products" | "student" | "tbl_test" | "tbl_std" | "tbl_counter" | "tbl_user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -928,6 +960,138 @@ export namespace Prisma {
           }
         }
       }
+      tbl_counter: {
+        payload: Prisma.$tbl_counterPayload<ExtArgs>
+        fields: Prisma.tbl_counterFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.tbl_counterFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_counterPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tbl_counterFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_counterPayload>
+          }
+          findFirst: {
+            args: Prisma.tbl_counterFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_counterPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.tbl_counterFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_counterPayload>
+          }
+          findMany: {
+            args: Prisma.tbl_counterFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_counterPayload>[]
+          }
+          create: {
+            args: Prisma.tbl_counterCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_counterPayload>
+          }
+          createMany: {
+            args: Prisma.tbl_counterCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.tbl_counterDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_counterPayload>
+          }
+          update: {
+            args: Prisma.tbl_counterUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_counterPayload>
+          }
+          deleteMany: {
+            args: Prisma.tbl_counterDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.tbl_counterUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.tbl_counterUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_counterPayload>
+          }
+          aggregate: {
+            args: Prisma.Tbl_counterAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTbl_counter>
+          }
+          groupBy: {
+            args: Prisma.tbl_counterGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Tbl_counterGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.tbl_counterCountArgs<ExtArgs>
+            result: $Utils.Optional<Tbl_counterCountAggregateOutputType> | number
+          }
+        }
+      }
+      tbl_user: {
+        payload: Prisma.$tbl_userPayload<ExtArgs>
+        fields: Prisma.tbl_userFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.tbl_userFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_userPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tbl_userFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_userPayload>
+          }
+          findFirst: {
+            args: Prisma.tbl_userFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_userPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.tbl_userFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_userPayload>
+          }
+          findMany: {
+            args: Prisma.tbl_userFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_userPayload>[]
+          }
+          create: {
+            args: Prisma.tbl_userCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_userPayload>
+          }
+          createMany: {
+            args: Prisma.tbl_userCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.tbl_userDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_userPayload>
+          }
+          update: {
+            args: Prisma.tbl_userUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_userPayload>
+          }
+          deleteMany: {
+            args: Prisma.tbl_userDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.tbl_userUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.tbl_userUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tbl_userPayload>
+          }
+          aggregate: {
+            args: Prisma.Tbl_userAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTbl_user>
+          }
+          groupBy: {
+            args: Prisma.tbl_userGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Tbl_userGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.tbl_userCountArgs<ExtArgs>
+            result: $Utils.Optional<Tbl_userCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1055,6 +1219,8 @@ export namespace Prisma {
     student?: studentOmit
     tbl_test?: tbl_testOmit
     tbl_std?: tbl_stdOmit
+    tbl_counter?: tbl_counterOmit
+    tbl_user?: tbl_userOmit
   }
 
   /* Types for Logging */
@@ -4817,6 +4983,1826 @@ export namespace Prisma {
 
 
   /**
+   * Model tbl_counter
+   */
+
+  export type AggregateTbl_counter = {
+    _count: Tbl_counterCountAggregateOutputType | null
+    _avg: Tbl_counterAvgAggregateOutputType | null
+    _sum: Tbl_counterSumAggregateOutputType | null
+    _min: Tbl_counterMinAggregateOutputType | null
+    _max: Tbl_counterMaxAggregateOutputType | null
+  }
+
+  export type Tbl_counterAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Tbl_counterSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Tbl_counterMinAggregateOutputType = {
+    id: number | null
+    dateCreate: Date | null
+  }
+
+  export type Tbl_counterMaxAggregateOutputType = {
+    id: number | null
+    dateCreate: Date | null
+  }
+
+  export type Tbl_counterCountAggregateOutputType = {
+    id: number
+    dateCreate: number
+    _all: number
+  }
+
+
+  export type Tbl_counterAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type Tbl_counterSumAggregateInputType = {
+    id?: true
+  }
+
+  export type Tbl_counterMinAggregateInputType = {
+    id?: true
+    dateCreate?: true
+  }
+
+  export type Tbl_counterMaxAggregateInputType = {
+    id?: true
+    dateCreate?: true
+  }
+
+  export type Tbl_counterCountAggregateInputType = {
+    id?: true
+    dateCreate?: true
+    _all?: true
+  }
+
+  export type Tbl_counterAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tbl_counter to aggregate.
+     */
+    where?: tbl_counterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_counters to fetch.
+     */
+    orderBy?: tbl_counterOrderByWithRelationInput | tbl_counterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tbl_counterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_counters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_counters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tbl_counters
+    **/
+    _count?: true | Tbl_counterCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Tbl_counterAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Tbl_counterSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Tbl_counterMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Tbl_counterMaxAggregateInputType
+  }
+
+  export type GetTbl_counterAggregateType<T extends Tbl_counterAggregateArgs> = {
+        [P in keyof T & keyof AggregateTbl_counter]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTbl_counter[P]>
+      : GetScalarType<T[P], AggregateTbl_counter[P]>
+  }
+
+
+
+
+  export type tbl_counterGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tbl_counterWhereInput
+    orderBy?: tbl_counterOrderByWithAggregationInput | tbl_counterOrderByWithAggregationInput[]
+    by: Tbl_counterScalarFieldEnum[] | Tbl_counterScalarFieldEnum
+    having?: tbl_counterScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Tbl_counterCountAggregateInputType | true
+    _avg?: Tbl_counterAvgAggregateInputType
+    _sum?: Tbl_counterSumAggregateInputType
+    _min?: Tbl_counterMinAggregateInputType
+    _max?: Tbl_counterMaxAggregateInputType
+  }
+
+  export type Tbl_counterGroupByOutputType = {
+    id: number
+    dateCreate: Date
+    _count: Tbl_counterCountAggregateOutputType | null
+    _avg: Tbl_counterAvgAggregateOutputType | null
+    _sum: Tbl_counterSumAggregateOutputType | null
+    _min: Tbl_counterMinAggregateOutputType | null
+    _max: Tbl_counterMaxAggregateOutputType | null
+  }
+
+  type GetTbl_counterGroupByPayload<T extends tbl_counterGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Tbl_counterGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Tbl_counterGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Tbl_counterGroupByOutputType[P]>
+            : GetScalarType<T[P], Tbl_counterGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tbl_counterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dateCreate?: boolean
+  }, ExtArgs["result"]["tbl_counter"]>
+
+
+
+  export type tbl_counterSelectScalar = {
+    id?: boolean
+    dateCreate?: boolean
+  }
+
+  export type tbl_counterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dateCreate", ExtArgs["result"]["tbl_counter"]>
+
+  export type $tbl_counterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tbl_counter"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      dateCreate: Date
+    }, ExtArgs["result"]["tbl_counter"]>
+    composites: {}
+  }
+
+  type tbl_counterGetPayload<S extends boolean | null | undefined | tbl_counterDefaultArgs> = $Result.GetResult<Prisma.$tbl_counterPayload, S>
+
+  type tbl_counterCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tbl_counterFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Tbl_counterCountAggregateInputType | true
+    }
+
+  export interface tbl_counterDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tbl_counter'], meta: { name: 'tbl_counter' } }
+    /**
+     * Find zero or one Tbl_counter that matches the filter.
+     * @param {tbl_counterFindUniqueArgs} args - Arguments to find a Tbl_counter
+     * @example
+     * // Get one Tbl_counter
+     * const tbl_counter = await prisma.tbl_counter.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tbl_counterFindUniqueArgs>(args: SelectSubset<T, tbl_counterFindUniqueArgs<ExtArgs>>): Prisma__tbl_counterClient<$Result.GetResult<Prisma.$tbl_counterPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tbl_counter that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tbl_counterFindUniqueOrThrowArgs} args - Arguments to find a Tbl_counter
+     * @example
+     * // Get one Tbl_counter
+     * const tbl_counter = await prisma.tbl_counter.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tbl_counterFindUniqueOrThrowArgs>(args: SelectSubset<T, tbl_counterFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tbl_counterClient<$Result.GetResult<Prisma.$tbl_counterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tbl_counter that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_counterFindFirstArgs} args - Arguments to find a Tbl_counter
+     * @example
+     * // Get one Tbl_counter
+     * const tbl_counter = await prisma.tbl_counter.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tbl_counterFindFirstArgs>(args?: SelectSubset<T, tbl_counterFindFirstArgs<ExtArgs>>): Prisma__tbl_counterClient<$Result.GetResult<Prisma.$tbl_counterPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tbl_counter that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_counterFindFirstOrThrowArgs} args - Arguments to find a Tbl_counter
+     * @example
+     * // Get one Tbl_counter
+     * const tbl_counter = await prisma.tbl_counter.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tbl_counterFindFirstOrThrowArgs>(args?: SelectSubset<T, tbl_counterFindFirstOrThrowArgs<ExtArgs>>): Prisma__tbl_counterClient<$Result.GetResult<Prisma.$tbl_counterPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tbl_counters that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_counterFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tbl_counters
+     * const tbl_counters = await prisma.tbl_counter.findMany()
+     * 
+     * // Get first 10 Tbl_counters
+     * const tbl_counters = await prisma.tbl_counter.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tbl_counterWithIdOnly = await prisma.tbl_counter.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends tbl_counterFindManyArgs>(args?: SelectSubset<T, tbl_counterFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tbl_counterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tbl_counter.
+     * @param {tbl_counterCreateArgs} args - Arguments to create a Tbl_counter.
+     * @example
+     * // Create one Tbl_counter
+     * const Tbl_counter = await prisma.tbl_counter.create({
+     *   data: {
+     *     // ... data to create a Tbl_counter
+     *   }
+     * })
+     * 
+     */
+    create<T extends tbl_counterCreateArgs>(args: SelectSubset<T, tbl_counterCreateArgs<ExtArgs>>): Prisma__tbl_counterClient<$Result.GetResult<Prisma.$tbl_counterPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tbl_counters.
+     * @param {tbl_counterCreateManyArgs} args - Arguments to create many Tbl_counters.
+     * @example
+     * // Create many Tbl_counters
+     * const tbl_counter = await prisma.tbl_counter.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tbl_counterCreateManyArgs>(args?: SelectSubset<T, tbl_counterCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Tbl_counter.
+     * @param {tbl_counterDeleteArgs} args - Arguments to delete one Tbl_counter.
+     * @example
+     * // Delete one Tbl_counter
+     * const Tbl_counter = await prisma.tbl_counter.delete({
+     *   where: {
+     *     // ... filter to delete one Tbl_counter
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tbl_counterDeleteArgs>(args: SelectSubset<T, tbl_counterDeleteArgs<ExtArgs>>): Prisma__tbl_counterClient<$Result.GetResult<Prisma.$tbl_counterPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tbl_counter.
+     * @param {tbl_counterUpdateArgs} args - Arguments to update one Tbl_counter.
+     * @example
+     * // Update one Tbl_counter
+     * const tbl_counter = await prisma.tbl_counter.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tbl_counterUpdateArgs>(args: SelectSubset<T, tbl_counterUpdateArgs<ExtArgs>>): Prisma__tbl_counterClient<$Result.GetResult<Prisma.$tbl_counterPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tbl_counters.
+     * @param {tbl_counterDeleteManyArgs} args - Arguments to filter Tbl_counters to delete.
+     * @example
+     * // Delete a few Tbl_counters
+     * const { count } = await prisma.tbl_counter.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tbl_counterDeleteManyArgs>(args?: SelectSubset<T, tbl_counterDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tbl_counters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_counterUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tbl_counters
+     * const tbl_counter = await prisma.tbl_counter.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tbl_counterUpdateManyArgs>(args: SelectSubset<T, tbl_counterUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Tbl_counter.
+     * @param {tbl_counterUpsertArgs} args - Arguments to update or create a Tbl_counter.
+     * @example
+     * // Update or create a Tbl_counter
+     * const tbl_counter = await prisma.tbl_counter.upsert({
+     *   create: {
+     *     // ... data to create a Tbl_counter
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tbl_counter we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tbl_counterUpsertArgs>(args: SelectSubset<T, tbl_counterUpsertArgs<ExtArgs>>): Prisma__tbl_counterClient<$Result.GetResult<Prisma.$tbl_counterPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tbl_counters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_counterCountArgs} args - Arguments to filter Tbl_counters to count.
+     * @example
+     * // Count the number of Tbl_counters
+     * const count = await prisma.tbl_counter.count({
+     *   where: {
+     *     // ... the filter for the Tbl_counters we want to count
+     *   }
+     * })
+    **/
+    count<T extends tbl_counterCountArgs>(
+      args?: Subset<T, tbl_counterCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Tbl_counterCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tbl_counter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Tbl_counterAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Tbl_counterAggregateArgs>(args: Subset<T, Tbl_counterAggregateArgs>): Prisma.PrismaPromise<GetTbl_counterAggregateType<T>>
+
+    /**
+     * Group by Tbl_counter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_counterGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tbl_counterGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tbl_counterGroupByArgs['orderBy'] }
+        : { orderBy?: tbl_counterGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tbl_counterGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTbl_counterGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tbl_counter model
+   */
+  readonly fields: tbl_counterFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tbl_counter.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tbl_counterClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tbl_counter model
+   */
+  interface tbl_counterFieldRefs {
+    readonly id: FieldRef<"tbl_counter", 'Int'>
+    readonly dateCreate: FieldRef<"tbl_counter", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tbl_counter findUnique
+   */
+  export type tbl_counterFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_counter to fetch.
+     */
+    where: tbl_counterWhereUniqueInput
+  }
+
+  /**
+   * tbl_counter findUniqueOrThrow
+   */
+  export type tbl_counterFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_counter to fetch.
+     */
+    where: tbl_counterWhereUniqueInput
+  }
+
+  /**
+   * tbl_counter findFirst
+   */
+  export type tbl_counterFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_counter to fetch.
+     */
+    where?: tbl_counterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_counters to fetch.
+     */
+    orderBy?: tbl_counterOrderByWithRelationInput | tbl_counterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tbl_counters.
+     */
+    cursor?: tbl_counterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_counters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_counters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tbl_counters.
+     */
+    distinct?: Tbl_counterScalarFieldEnum | Tbl_counterScalarFieldEnum[]
+  }
+
+  /**
+   * tbl_counter findFirstOrThrow
+   */
+  export type tbl_counterFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_counter to fetch.
+     */
+    where?: tbl_counterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_counters to fetch.
+     */
+    orderBy?: tbl_counterOrderByWithRelationInput | tbl_counterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tbl_counters.
+     */
+    cursor?: tbl_counterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_counters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_counters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tbl_counters.
+     */
+    distinct?: Tbl_counterScalarFieldEnum | Tbl_counterScalarFieldEnum[]
+  }
+
+  /**
+   * tbl_counter findMany
+   */
+  export type tbl_counterFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_counters to fetch.
+     */
+    where?: tbl_counterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_counters to fetch.
+     */
+    orderBy?: tbl_counterOrderByWithRelationInput | tbl_counterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tbl_counters.
+     */
+    cursor?: tbl_counterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_counters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_counters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tbl_counters.
+     */
+    distinct?: Tbl_counterScalarFieldEnum | Tbl_counterScalarFieldEnum[]
+  }
+
+  /**
+   * tbl_counter create
+   */
+  export type tbl_counterCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+    /**
+     * The data needed to create a tbl_counter.
+     */
+    data?: XOR<tbl_counterCreateInput, tbl_counterUncheckedCreateInput>
+  }
+
+  /**
+   * tbl_counter createMany
+   */
+  export type tbl_counterCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tbl_counters.
+     */
+    data: tbl_counterCreateManyInput | tbl_counterCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tbl_counter update
+   */
+  export type tbl_counterUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+    /**
+     * The data needed to update a tbl_counter.
+     */
+    data: XOR<tbl_counterUpdateInput, tbl_counterUncheckedUpdateInput>
+    /**
+     * Choose, which tbl_counter to update.
+     */
+    where: tbl_counterWhereUniqueInput
+  }
+
+  /**
+   * tbl_counter updateMany
+   */
+  export type tbl_counterUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tbl_counters.
+     */
+    data: XOR<tbl_counterUpdateManyMutationInput, tbl_counterUncheckedUpdateManyInput>
+    /**
+     * Filter which tbl_counters to update
+     */
+    where?: tbl_counterWhereInput
+    /**
+     * Limit how many tbl_counters to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tbl_counter upsert
+   */
+  export type tbl_counterUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+    /**
+     * The filter to search for the tbl_counter to update in case it exists.
+     */
+    where: tbl_counterWhereUniqueInput
+    /**
+     * In case the tbl_counter found by the `where` argument doesn't exist, create a new tbl_counter with this data.
+     */
+    create: XOR<tbl_counterCreateInput, tbl_counterUncheckedCreateInput>
+    /**
+     * In case the tbl_counter was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tbl_counterUpdateInput, tbl_counterUncheckedUpdateInput>
+  }
+
+  /**
+   * tbl_counter delete
+   */
+  export type tbl_counterDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+    /**
+     * Filter which tbl_counter to delete.
+     */
+    where: tbl_counterWhereUniqueInput
+  }
+
+  /**
+   * tbl_counter deleteMany
+   */
+  export type tbl_counterDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tbl_counters to delete
+     */
+    where?: tbl_counterWhereInput
+    /**
+     * Limit how many tbl_counters to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tbl_counter without action
+   */
+  export type tbl_counterDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_counter
+     */
+    select?: tbl_counterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_counter
+     */
+    omit?: tbl_counterOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model tbl_user
+   */
+
+  export type AggregateTbl_user = {
+    _count: Tbl_userCountAggregateOutputType | null
+    _avg: Tbl_userAvgAggregateOutputType | null
+    _sum: Tbl_userSumAggregateOutputType | null
+    _min: Tbl_userMinAggregateOutputType | null
+    _max: Tbl_userMaxAggregateOutputType | null
+  }
+
+  export type Tbl_userAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Tbl_userSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Tbl_userMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    email: string | null
+    password: string | null
+    role: string | null
+    dateCreate: Date | null
+  }
+
+  export type Tbl_userMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    email: string | null
+    password: string | null
+    role: string | null
+    dateCreate: Date | null
+  }
+
+  export type Tbl_userCountAggregateOutputType = {
+    id: number
+    name: number
+    email: number
+    password: number
+    role: number
+    dateCreate: number
+    _all: number
+  }
+
+
+  export type Tbl_userAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type Tbl_userSumAggregateInputType = {
+    id?: true
+  }
+
+  export type Tbl_userMinAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    password?: true
+    role?: true
+    dateCreate?: true
+  }
+
+  export type Tbl_userMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    password?: true
+    role?: true
+    dateCreate?: true
+  }
+
+  export type Tbl_userCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    password?: true
+    role?: true
+    dateCreate?: true
+    _all?: true
+  }
+
+  export type Tbl_userAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tbl_user to aggregate.
+     */
+    where?: tbl_userWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_users to fetch.
+     */
+    orderBy?: tbl_userOrderByWithRelationInput | tbl_userOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tbl_userWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tbl_users
+    **/
+    _count?: true | Tbl_userCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Tbl_userAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Tbl_userSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Tbl_userMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Tbl_userMaxAggregateInputType
+  }
+
+  export type GetTbl_userAggregateType<T extends Tbl_userAggregateArgs> = {
+        [P in keyof T & keyof AggregateTbl_user]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTbl_user[P]>
+      : GetScalarType<T[P], AggregateTbl_user[P]>
+  }
+
+
+
+
+  export type tbl_userGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tbl_userWhereInput
+    orderBy?: tbl_userOrderByWithAggregationInput | tbl_userOrderByWithAggregationInput[]
+    by: Tbl_userScalarFieldEnum[] | Tbl_userScalarFieldEnum
+    having?: tbl_userScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Tbl_userCountAggregateInputType | true
+    _avg?: Tbl_userAvgAggregateInputType
+    _sum?: Tbl_userSumAggregateInputType
+    _min?: Tbl_userMinAggregateInputType
+    _max?: Tbl_userMaxAggregateInputType
+  }
+
+  export type Tbl_userGroupByOutputType = {
+    id: number
+    name: string
+    email: string
+    password: string
+    role: string
+    dateCreate: Date
+    _count: Tbl_userCountAggregateOutputType | null
+    _avg: Tbl_userAvgAggregateOutputType | null
+    _sum: Tbl_userSumAggregateOutputType | null
+    _min: Tbl_userMinAggregateOutputType | null
+    _max: Tbl_userMaxAggregateOutputType | null
+  }
+
+  type GetTbl_userGroupByPayload<T extends tbl_userGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Tbl_userGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Tbl_userGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Tbl_userGroupByOutputType[P]>
+            : GetScalarType<T[P], Tbl_userGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tbl_userSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    role?: boolean
+    dateCreate?: boolean
+  }, ExtArgs["result"]["tbl_user"]>
+
+
+
+  export type tbl_userSelectScalar = {
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    role?: boolean
+    dateCreate?: boolean
+  }
+
+  export type tbl_userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "dateCreate", ExtArgs["result"]["tbl_user"]>
+
+  export type $tbl_userPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tbl_user"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      email: string
+      password: string
+      role: string
+      dateCreate: Date
+    }, ExtArgs["result"]["tbl_user"]>
+    composites: {}
+  }
+
+  type tbl_userGetPayload<S extends boolean | null | undefined | tbl_userDefaultArgs> = $Result.GetResult<Prisma.$tbl_userPayload, S>
+
+  type tbl_userCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tbl_userFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Tbl_userCountAggregateInputType | true
+    }
+
+  export interface tbl_userDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tbl_user'], meta: { name: 'tbl_user' } }
+    /**
+     * Find zero or one Tbl_user that matches the filter.
+     * @param {tbl_userFindUniqueArgs} args - Arguments to find a Tbl_user
+     * @example
+     * // Get one Tbl_user
+     * const tbl_user = await prisma.tbl_user.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tbl_userFindUniqueArgs>(args: SelectSubset<T, tbl_userFindUniqueArgs<ExtArgs>>): Prisma__tbl_userClient<$Result.GetResult<Prisma.$tbl_userPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tbl_user that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tbl_userFindUniqueOrThrowArgs} args - Arguments to find a Tbl_user
+     * @example
+     * // Get one Tbl_user
+     * const tbl_user = await prisma.tbl_user.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tbl_userFindUniqueOrThrowArgs>(args: SelectSubset<T, tbl_userFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tbl_userClient<$Result.GetResult<Prisma.$tbl_userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tbl_user that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_userFindFirstArgs} args - Arguments to find a Tbl_user
+     * @example
+     * // Get one Tbl_user
+     * const tbl_user = await prisma.tbl_user.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tbl_userFindFirstArgs>(args?: SelectSubset<T, tbl_userFindFirstArgs<ExtArgs>>): Prisma__tbl_userClient<$Result.GetResult<Prisma.$tbl_userPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tbl_user that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_userFindFirstOrThrowArgs} args - Arguments to find a Tbl_user
+     * @example
+     * // Get one Tbl_user
+     * const tbl_user = await prisma.tbl_user.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tbl_userFindFirstOrThrowArgs>(args?: SelectSubset<T, tbl_userFindFirstOrThrowArgs<ExtArgs>>): Prisma__tbl_userClient<$Result.GetResult<Prisma.$tbl_userPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tbl_users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_userFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tbl_users
+     * const tbl_users = await prisma.tbl_user.findMany()
+     * 
+     * // Get first 10 Tbl_users
+     * const tbl_users = await prisma.tbl_user.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tbl_userWithIdOnly = await prisma.tbl_user.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends tbl_userFindManyArgs>(args?: SelectSubset<T, tbl_userFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tbl_userPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tbl_user.
+     * @param {tbl_userCreateArgs} args - Arguments to create a Tbl_user.
+     * @example
+     * // Create one Tbl_user
+     * const Tbl_user = await prisma.tbl_user.create({
+     *   data: {
+     *     // ... data to create a Tbl_user
+     *   }
+     * })
+     * 
+     */
+    create<T extends tbl_userCreateArgs>(args: SelectSubset<T, tbl_userCreateArgs<ExtArgs>>): Prisma__tbl_userClient<$Result.GetResult<Prisma.$tbl_userPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tbl_users.
+     * @param {tbl_userCreateManyArgs} args - Arguments to create many Tbl_users.
+     * @example
+     * // Create many Tbl_users
+     * const tbl_user = await prisma.tbl_user.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tbl_userCreateManyArgs>(args?: SelectSubset<T, tbl_userCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Tbl_user.
+     * @param {tbl_userDeleteArgs} args - Arguments to delete one Tbl_user.
+     * @example
+     * // Delete one Tbl_user
+     * const Tbl_user = await prisma.tbl_user.delete({
+     *   where: {
+     *     // ... filter to delete one Tbl_user
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tbl_userDeleteArgs>(args: SelectSubset<T, tbl_userDeleteArgs<ExtArgs>>): Prisma__tbl_userClient<$Result.GetResult<Prisma.$tbl_userPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tbl_user.
+     * @param {tbl_userUpdateArgs} args - Arguments to update one Tbl_user.
+     * @example
+     * // Update one Tbl_user
+     * const tbl_user = await prisma.tbl_user.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tbl_userUpdateArgs>(args: SelectSubset<T, tbl_userUpdateArgs<ExtArgs>>): Prisma__tbl_userClient<$Result.GetResult<Prisma.$tbl_userPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tbl_users.
+     * @param {tbl_userDeleteManyArgs} args - Arguments to filter Tbl_users to delete.
+     * @example
+     * // Delete a few Tbl_users
+     * const { count } = await prisma.tbl_user.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tbl_userDeleteManyArgs>(args?: SelectSubset<T, tbl_userDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tbl_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_userUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tbl_users
+     * const tbl_user = await prisma.tbl_user.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tbl_userUpdateManyArgs>(args: SelectSubset<T, tbl_userUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Tbl_user.
+     * @param {tbl_userUpsertArgs} args - Arguments to update or create a Tbl_user.
+     * @example
+     * // Update or create a Tbl_user
+     * const tbl_user = await prisma.tbl_user.upsert({
+     *   create: {
+     *     // ... data to create a Tbl_user
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tbl_user we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tbl_userUpsertArgs>(args: SelectSubset<T, tbl_userUpsertArgs<ExtArgs>>): Prisma__tbl_userClient<$Result.GetResult<Prisma.$tbl_userPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tbl_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_userCountArgs} args - Arguments to filter Tbl_users to count.
+     * @example
+     * // Count the number of Tbl_users
+     * const count = await prisma.tbl_user.count({
+     *   where: {
+     *     // ... the filter for the Tbl_users we want to count
+     *   }
+     * })
+    **/
+    count<T extends tbl_userCountArgs>(
+      args?: Subset<T, tbl_userCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Tbl_userCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tbl_user.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Tbl_userAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Tbl_userAggregateArgs>(args: Subset<T, Tbl_userAggregateArgs>): Prisma.PrismaPromise<GetTbl_userAggregateType<T>>
+
+    /**
+     * Group by Tbl_user.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tbl_userGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tbl_userGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tbl_userGroupByArgs['orderBy'] }
+        : { orderBy?: tbl_userGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tbl_userGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTbl_userGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tbl_user model
+   */
+  readonly fields: tbl_userFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tbl_user.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tbl_userClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tbl_user model
+   */
+  interface tbl_userFieldRefs {
+    readonly id: FieldRef<"tbl_user", 'Int'>
+    readonly name: FieldRef<"tbl_user", 'String'>
+    readonly email: FieldRef<"tbl_user", 'String'>
+    readonly password: FieldRef<"tbl_user", 'String'>
+    readonly role: FieldRef<"tbl_user", 'String'>
+    readonly dateCreate: FieldRef<"tbl_user", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tbl_user findUnique
+   */
+  export type tbl_userFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_user to fetch.
+     */
+    where: tbl_userWhereUniqueInput
+  }
+
+  /**
+   * tbl_user findUniqueOrThrow
+   */
+  export type tbl_userFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_user to fetch.
+     */
+    where: tbl_userWhereUniqueInput
+  }
+
+  /**
+   * tbl_user findFirst
+   */
+  export type tbl_userFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_user to fetch.
+     */
+    where?: tbl_userWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_users to fetch.
+     */
+    orderBy?: tbl_userOrderByWithRelationInput | tbl_userOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tbl_users.
+     */
+    cursor?: tbl_userWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tbl_users.
+     */
+    distinct?: Tbl_userScalarFieldEnum | Tbl_userScalarFieldEnum[]
+  }
+
+  /**
+   * tbl_user findFirstOrThrow
+   */
+  export type tbl_userFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_user to fetch.
+     */
+    where?: tbl_userWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_users to fetch.
+     */
+    orderBy?: tbl_userOrderByWithRelationInput | tbl_userOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tbl_users.
+     */
+    cursor?: tbl_userWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tbl_users.
+     */
+    distinct?: Tbl_userScalarFieldEnum | Tbl_userScalarFieldEnum[]
+  }
+
+  /**
+   * tbl_user findMany
+   */
+  export type tbl_userFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+    /**
+     * Filter, which tbl_users to fetch.
+     */
+    where?: tbl_userWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tbl_users to fetch.
+     */
+    orderBy?: tbl_userOrderByWithRelationInput | tbl_userOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tbl_users.
+     */
+    cursor?: tbl_userWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tbl_users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tbl_users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tbl_users.
+     */
+    distinct?: Tbl_userScalarFieldEnum | Tbl_userScalarFieldEnum[]
+  }
+
+  /**
+   * tbl_user create
+   */
+  export type tbl_userCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+    /**
+     * The data needed to create a tbl_user.
+     */
+    data: XOR<tbl_userCreateInput, tbl_userUncheckedCreateInput>
+  }
+
+  /**
+   * tbl_user createMany
+   */
+  export type tbl_userCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tbl_users.
+     */
+    data: tbl_userCreateManyInput | tbl_userCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tbl_user update
+   */
+  export type tbl_userUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+    /**
+     * The data needed to update a tbl_user.
+     */
+    data: XOR<tbl_userUpdateInput, tbl_userUncheckedUpdateInput>
+    /**
+     * Choose, which tbl_user to update.
+     */
+    where: tbl_userWhereUniqueInput
+  }
+
+  /**
+   * tbl_user updateMany
+   */
+  export type tbl_userUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tbl_users.
+     */
+    data: XOR<tbl_userUpdateManyMutationInput, tbl_userUncheckedUpdateManyInput>
+    /**
+     * Filter which tbl_users to update
+     */
+    where?: tbl_userWhereInput
+    /**
+     * Limit how many tbl_users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tbl_user upsert
+   */
+  export type tbl_userUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+    /**
+     * The filter to search for the tbl_user to update in case it exists.
+     */
+    where: tbl_userWhereUniqueInput
+    /**
+     * In case the tbl_user found by the `where` argument doesn't exist, create a new tbl_user with this data.
+     */
+    create: XOR<tbl_userCreateInput, tbl_userUncheckedCreateInput>
+    /**
+     * In case the tbl_user was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tbl_userUpdateInput, tbl_userUncheckedUpdateInput>
+  }
+
+  /**
+   * tbl_user delete
+   */
+  export type tbl_userDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+    /**
+     * Filter which tbl_user to delete.
+     */
+    where: tbl_userWhereUniqueInput
+  }
+
+  /**
+   * tbl_user deleteMany
+   */
+  export type tbl_userDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tbl_users to delete
+     */
+    where?: tbl_userWhereInput
+    /**
+     * Limit how many tbl_users to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tbl_user without action
+   */
+  export type tbl_userDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_user
+     */
+    select?: tbl_userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_user
+     */
+    omit?: tbl_userOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4873,6 +6859,26 @@ export namespace Prisma {
   export type Tbl_stdScalarFieldEnum = (typeof Tbl_stdScalarFieldEnum)[keyof typeof Tbl_stdScalarFieldEnum]
 
 
+  export const Tbl_counterScalarFieldEnum: {
+    id: 'id',
+    dateCreate: 'dateCreate'
+  };
+
+  export type Tbl_counterScalarFieldEnum = (typeof Tbl_counterScalarFieldEnum)[keyof typeof Tbl_counterScalarFieldEnum]
+
+
+  export const Tbl_userScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    password: 'password',
+    role: 'role',
+    dateCreate: 'dateCreate'
+  };
+
+  export type Tbl_userScalarFieldEnum = (typeof Tbl_userScalarFieldEnum)[keyof typeof Tbl_userScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -4921,6 +6927,16 @@ export namespace Prisma {
   };
 
   export type tbl_stdOrderByRelevanceFieldEnum = (typeof tbl_stdOrderByRelevanceFieldEnum)[keyof typeof tbl_stdOrderByRelevanceFieldEnum]
+
+
+  export const tbl_userOrderByRelevanceFieldEnum: {
+    name: 'name',
+    email: 'email',
+    password: 'password',
+    role: 'role'
+  };
+
+  export type tbl_userOrderByRelevanceFieldEnum = (typeof tbl_userOrderByRelevanceFieldEnum)[keyof typeof tbl_userOrderByRelevanceFieldEnum]
 
 
   /**
@@ -5181,6 +7197,105 @@ export namespace Prisma {
     dateCreate?: DateTimeWithAggregatesFilter<"tbl_std"> | Date | string
   }
 
+  export type tbl_counterWhereInput = {
+    AND?: tbl_counterWhereInput | tbl_counterWhereInput[]
+    OR?: tbl_counterWhereInput[]
+    NOT?: tbl_counterWhereInput | tbl_counterWhereInput[]
+    id?: IntFilter<"tbl_counter"> | number
+    dateCreate?: DateTimeFilter<"tbl_counter"> | Date | string
+  }
+
+  export type tbl_counterOrderByWithRelationInput = {
+    id?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_counterWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: tbl_counterWhereInput | tbl_counterWhereInput[]
+    OR?: tbl_counterWhereInput[]
+    NOT?: tbl_counterWhereInput | tbl_counterWhereInput[]
+    dateCreate?: DateTimeFilter<"tbl_counter"> | Date | string
+  }, "id">
+
+  export type tbl_counterOrderByWithAggregationInput = {
+    id?: SortOrder
+    dateCreate?: SortOrder
+    _count?: tbl_counterCountOrderByAggregateInput
+    _avg?: tbl_counterAvgOrderByAggregateInput
+    _max?: tbl_counterMaxOrderByAggregateInput
+    _min?: tbl_counterMinOrderByAggregateInput
+    _sum?: tbl_counterSumOrderByAggregateInput
+  }
+
+  export type tbl_counterScalarWhereWithAggregatesInput = {
+    AND?: tbl_counterScalarWhereWithAggregatesInput | tbl_counterScalarWhereWithAggregatesInput[]
+    OR?: tbl_counterScalarWhereWithAggregatesInput[]
+    NOT?: tbl_counterScalarWhereWithAggregatesInput | tbl_counterScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"tbl_counter"> | number
+    dateCreate?: DateTimeWithAggregatesFilter<"tbl_counter"> | Date | string
+  }
+
+  export type tbl_userWhereInput = {
+    AND?: tbl_userWhereInput | tbl_userWhereInput[]
+    OR?: tbl_userWhereInput[]
+    NOT?: tbl_userWhereInput | tbl_userWhereInput[]
+    id?: IntFilter<"tbl_user"> | number
+    name?: StringFilter<"tbl_user"> | string
+    email?: StringFilter<"tbl_user"> | string
+    password?: StringFilter<"tbl_user"> | string
+    role?: StringFilter<"tbl_user"> | string
+    dateCreate?: DateTimeFilter<"tbl_user"> | Date | string
+  }
+
+  export type tbl_userOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    dateCreate?: SortOrder
+    _relevance?: tbl_userOrderByRelevanceInput
+  }
+
+  export type tbl_userWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    email?: string
+    AND?: tbl_userWhereInput | tbl_userWhereInput[]
+    OR?: tbl_userWhereInput[]
+    NOT?: tbl_userWhereInput | tbl_userWhereInput[]
+    name?: StringFilter<"tbl_user"> | string
+    password?: StringFilter<"tbl_user"> | string
+    role?: StringFilter<"tbl_user"> | string
+    dateCreate?: DateTimeFilter<"tbl_user"> | Date | string
+  }, "id" | "email">
+
+  export type tbl_userOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    dateCreate?: SortOrder
+    _count?: tbl_userCountOrderByAggregateInput
+    _avg?: tbl_userAvgOrderByAggregateInput
+    _max?: tbl_userMaxOrderByAggregateInput
+    _min?: tbl_userMinOrderByAggregateInput
+    _sum?: tbl_userSumOrderByAggregateInput
+  }
+
+  export type tbl_userScalarWhereWithAggregatesInput = {
+    AND?: tbl_userScalarWhereWithAggregatesInput | tbl_userScalarWhereWithAggregatesInput[]
+    OR?: tbl_userScalarWhereWithAggregatesInput[]
+    NOT?: tbl_userScalarWhereWithAggregatesInput | tbl_userScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"tbl_user"> | number
+    name?: StringWithAggregatesFilter<"tbl_user"> | string
+    email?: StringWithAggregatesFilter<"tbl_user"> | string
+    password?: StringWithAggregatesFilter<"tbl_user"> | string
+    role?: StringWithAggregatesFilter<"tbl_user"> | string
+    dateCreate?: DateTimeWithAggregatesFilter<"tbl_user"> | Date | string
+  }
+
   export type productsCreateInput = {
     name: string
     price: Decimal | DecimalJsLike | number | string
@@ -5383,6 +7498,98 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     std_code?: StringFieldUpdateOperationsInput | string
     std_name?: StringFieldUpdateOperationsInput | string
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_counterCreateInput = {
+    dateCreate?: Date | string
+  }
+
+  export type tbl_counterUncheckedCreateInput = {
+    id?: number
+    dateCreate?: Date | string
+  }
+
+  export type tbl_counterUpdateInput = {
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_counterUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_counterCreateManyInput = {
+    id?: number
+    dateCreate?: Date | string
+  }
+
+  export type tbl_counterUpdateManyMutationInput = {
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_counterUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_userCreateInput = {
+    name: string
+    email: string
+    password: string
+    role?: string
+    dateCreate?: Date | string
+  }
+
+  export type tbl_userUncheckedCreateInput = {
+    id?: number
+    name: string
+    email: string
+    password: string
+    role?: string
+    dateCreate?: Date | string
+  }
+
+  export type tbl_userUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_userUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_userCreateManyInput = {
+    id?: number
+    name: string
+    email: string
+    password: string
+    role?: string
+    dateCreate?: Date | string
+  }
+
+  export type tbl_userUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type tbl_userUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     dateCreate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5686,6 +7893,70 @@ export namespace Prisma {
   }
 
   export type tbl_stdSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type tbl_counterCountOrderByAggregateInput = {
+    id?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_counterAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type tbl_counterMaxOrderByAggregateInput = {
+    id?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_counterMinOrderByAggregateInput = {
+    id?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_counterSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type tbl_userOrderByRelevanceInput = {
+    fields: tbl_userOrderByRelevanceFieldEnum | tbl_userOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type tbl_userCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_userAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type tbl_userMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_userMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    dateCreate?: SortOrder
+  }
+
+  export type tbl_userSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
