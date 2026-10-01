@@ -1,4 +1,4 @@
-import db from "@/lib/db";
+import prisma from "@/lib/prisma";
 import NavbarAdmin from "@/components/NavbarAdmin";
 import BootstrapClient from "@/components/BootstrapClient";
 import EditStudentForm from "@/components/EditStudentForm";
@@ -6,11 +6,10 @@ import EditStudentForm from "@/components/EditStudentForm";
 export default async function EditStudentPage({ params }) {
   const { id } = await params;
 
-  const [students] = await db.query(
-    "SELECT * FROM student WHERE id = ?",
-    [id]
-  );
-  const student = students[0];
+  // ดึงข้อมูลเดิม
+  const student = await prisma.student.findUnique({
+    where: { id: Number(id) },
+  });
 
   if (!student) {
     return (

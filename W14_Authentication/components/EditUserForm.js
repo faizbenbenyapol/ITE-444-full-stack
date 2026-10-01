@@ -124,6 +124,9 @@ export default function EditUserForm({ users }) {
                     <option value="admin">
                         admin
                     </option>
+                    <option value="user">
+                        user
+                    </option>
                 </select>
             </div>
 

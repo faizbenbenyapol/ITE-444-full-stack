@@ -64,9 +64,9 @@ export async function createUser(prevState, formData) {
             }
         
             // role
-                if (!role || role.length < 3) {
+                if (!["admin", "user"].includes(role)) {
                     errors.push(
-                        "role ต้องมีอย่างน้อย 3 ตัวอักษร"
+                        "กรุณาเลือก role เป็น admin หรือ user"
                     );
                 }
 

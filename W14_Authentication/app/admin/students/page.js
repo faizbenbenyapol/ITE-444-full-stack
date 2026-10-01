@@ -1,21 +1,24 @@
-import db from "@/lib/db";
+import prisma from "@/lib/prisma";
 import Link from "next/link";
-import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import NavbarAdmin from "@/components/NavbarAdmin";
 import BootstrapClient from "@/components/BootstrapClient";
 import SuccessAlert from "@/components/SuccessAlert";
 import DeleteButton from "@/components/SweetAlertDel";
 
 export default async function StudentPage() {
-  const [students] = await db.query(
-    "SELECT * FROM student ORDER BY id DESC"
-  );
+  const students = await prisma.student.findMany({
+    orderBy: { id: "desc" },
+  });
 
   async function deleteStudent(formData) {
     "use server";
     const id = formData.get("id");
-    await db.query("DELETE FROM student WHERE id = ?", [id]);
-    revalidatePath("/admin/students");
+    await prisma.student.delete({
+      where: { id: Number(id) },
+    });
+    // ลบเสร็จแล้วส่ง ?success=delete กลับไป เพื่อให้ SuccessAlert แสดง SweetAlert
+    redirect("/admin/students?success=delete");
   }
 
   return (

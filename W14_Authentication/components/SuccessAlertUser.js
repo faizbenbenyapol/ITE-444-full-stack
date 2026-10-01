@@ -29,6 +29,15 @@ export default function SuccessAlertUser() {
             router.replace("/admin/users");
         }
 
+        else if (success === "delete") {
+            Swal.fire({
+                title: "ลบข้อมูลสำเร็จ",
+                icon: "success",
+                confirmButtonText: "ตกลง"
+            });
+            router.replace("/admin/users");
+        }
+
            else if (success === "updatePassword") {
             Swal.fire({
                 title: "Reset Password",

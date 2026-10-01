@@ -127,6 +127,9 @@ export default function CreateUserForm() {
                     <option value="admin">
                         admin
                     </option>
+                    <option value="user">
+                        user
+                    </option>
                 </select>
             </div>
 

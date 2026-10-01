@@ -36,6 +36,15 @@ export default function SuccessAlert() {
       });
 
       router.replace(redirectUrl);
+    } else if (success === "delete") {
+      Swal.fire({
+        title: "ลบข้อมูลสำเร็จ",
+        text: `ลบ${label}เรียบร้อยแล้ว`,
+        icon: "success",
+        confirmButtonText: "ตกลง",
+      });
+
+      router.replace(redirectUrl);
     }
   }, [searchParams, router, pathname]);
 

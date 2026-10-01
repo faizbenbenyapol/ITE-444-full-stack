@@ -2,10 +2,9 @@ import prisma from "@/lib/prisma";
 import NavbarAdmin from "@/components/NavbarAdmin";
 import BootstrapClient from "@/components/BootstrapClient";
 import Link from "next/link";
-import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import DeleteButton from "@/components/SweetAlertDel";
 import SuccessAlertUser from "@/components/SuccessAlertUser";
-import { Colors } from "chart.js";
 
 export default async function Home() {
 
@@ -18,7 +17,8 @@ async function deleteUser(formData) {
                 id: Number(id)
             }
         });
-    revalidatePath("/admin/users");
+    // ลบเสร็จแล้วส่ง ?success=delete กลับไป เพื่อให้ SuccessAlertUser แสดง SweetAlert
+    redirect("/admin/users?success=delete");
 }
 
 
