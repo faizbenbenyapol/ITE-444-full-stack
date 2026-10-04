@@ -1,0 +1,28 @@
+{
+  "name": "w15-exam",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "db:pull": "prisma db pull",
+    "gen": "prisma generate",
+    "prisma": "prisma db pull && prisma generate"
+  },
+  "dependencies": {
+    "@prisma/adapter-mariadb": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "bootstrap": "^5.3.8",
+    "next": "16.3.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "sweetalert2": "^11.26.25"
+  },
+  "devDependencies": {
+    "eslint": "^9",
+    "eslint-config-next": "16.3.2",
+    "prisma": "^7.10.0"
+  }
+}

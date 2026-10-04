@@ -1,0 +1,7 @@
+node_modules
+.next
+# Keep environment variables out of version control (copy .env.example -> .env)
+.env
+
+# Prisma client — สร้างใหม่ด้วย npm run prisma
+/generated
